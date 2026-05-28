@@ -1,11 +1,33 @@
 # Checklist de test
 
-- Lancer `npm run dev`.
-- Ajouter, modifier et supprimer des joueurs.
-- Changer la langue.
-- Jouer au moins une manche de chaque jeu.
-- Terminer une partie et vérifier les scores.
-- Recharger la page et vérifier la persistance locale.
-- Construire avec `npm run build`.
-- Tester `npm run preview`.
-- Vérifier que le mode en ligne affiche un message clair sans Firebase.
+# Checklist de test
+
+- Fresh browser sans `localStorage`: aucun joueur par défaut ne doit apparaître.
+- Migration anciens faux joueurs: si seuls `Youssef` et `Amira` sont sauvegardés, ils sont supprimés.
+- Ajouter, modifier et supprimer des joueurs réels.
+- Ajouter un bot démo, ajouter assez de bots, puis supprimer tous les bots.
+- Vérifier le message: les bots sont seulement pour la démo/pratique locale.
+- Tester le gating: 2+ joueurs pour Would You Rather, Truth or Dare, Guess Word.
+- Tester le gating: 3+ joueurs pour Who's the Impostor.
+- Tester le gating: 1+ joueur pour Tunisian Quiz.
+- Would You Rather: toucher une carte doit enregistrer le vote directement.
+- Would You Rather: vérifier les pourcentages, les joueurs par choix et le score unique par manche.
+- Quiz: toucher une réponse doit soumettre directement, vert pour correct, rouge pour mauvais choix.
+- Truth or Dare: choisir niveau, choisir vérité/action, Done/Skip.
+- Guess Word: révéler le mot, timer, correct/skip.
+- Impostor: révélation privée, phase discussion, vote par tap, reveal final.
+- Fin de jeu: confirmation avant sauvegarde.
+- Résultats: classement, gagnant si score > 0, historique.
+- Settings: reset local data supprime les clés `tfarhida.v1.*`.
+- Changer la langue `tn/fr/en`.
+- Vérifier RTL en langue `tn`.
+- Tester viewport mobile.
+- Tester viewport tablette.
+- Tester viewport desktop.
+- Tester GitHub Pages refresh avec `HashRouter`.
+- Tester lien local de partage: il ouvre le même jeu sans prétendre synchroniser les scores.
+- Tester `/#/room/ABC123` sans Firebase: page claire indiquant que Firebase est requis.
+- Tester page Online sans Firebase: pas de faux login, message de configuration.
+- Lancer `npm run typecheck`.
+- Lancer `npm run lint`.
+- Lancer `npm run build`.

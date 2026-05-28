@@ -24,4 +24,11 @@ export const storageService = {
   addHistory: (result: SessionResult) => write("history", [result, ...read<SessionResult[]>("history", [])].slice(0, 20)),
   getSetting: <T>(key: string, fallback: T) => read<T>(`settings.${key}`, fallback),
   setSetting: <T>(key: string, value: T) => write(`settings.${key}`, value),
+  setLastGame: (gameId: string) => write("lastGame", gameId),
+  getLastGame: () => read<string | undefined>("lastGame", undefined),
+  clearAll: () => {
+    Object.keys(localStorage)
+      .filter((key) => key.startsWith(prefix))
+      .forEach((key) => localStorage.removeItem(key));
+  },
 };

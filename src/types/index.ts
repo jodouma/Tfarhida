@@ -10,6 +10,7 @@ export type Player = {
   avatar: string;
   color: string;
   score: number;
+  isBot?: boolean;
 };
 
 export type GameMeta = {
@@ -18,6 +19,8 @@ export type GameMeta = {
   short: LocalizedText;
   vibe: LocalizedText;
   players: string;
+  minPlayers: number;
+  duration: LocalizedText;
   color: string;
   icon: string;
   image: string;

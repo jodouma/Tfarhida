@@ -4,6 +4,7 @@ import { storageService } from "../services/storageService";
 
 const avatars = ["😄", "😎", "🤩", "🥳", "🧠", "🔥", "🎧", "⚽", "🍋", "🌶️"];
 const colors = ["#f97316", "#ec4899", "#8b5cf6", "#14b8a6", "#22c55e", "#0ea5e9", "#ef4444", "#f59e0b"];
+const botNames = ["Bot Chleka", "Bot Lablabi", "Bot Dawcha", "Bot Harissa", "Bot Bambalouni"];
 
 type AppState = {
   lang: Lang;
@@ -12,6 +13,9 @@ type AppState = {
   activeGame?: GameId;
   setLang: (lang: Lang) => void;
   addPlayer: (name?: string) => void;
+  addBot: () => void;
+  addBotsTo: (count: number) => void;
+  removeBots: () => void;
   updatePlayer: (id: string, patch: Partial<Player>) => void;
   removePlayer: (id: string) => void;
   addScore: (id: string, amount: number) => void;
@@ -20,16 +24,29 @@ type AppState = {
   saveResult: (gameId: GameId) => SessionResult;
 };
 
-const initialPlayers = storageService.getPlayers();
+function migratePlayers(players: Player[]) {
+  const oldDefaults = players.length === 2 && players.some((p) => p.name === "Youssef") && players.some((p) => p.name === "Amira");
+  if (oldDefaults) {
+    storageService.setPlayers([]);
+    return [];
+  }
+  return players;
+}
+
+const initialPlayers = migratePlayers(storageService.getPlayers());
+
+const createPlayer = (index: number, name?: string, isBot = false): Player => ({
+  id: crypto.randomUUID(),
+  name: isBot ? `🤖 ${botNames[index % botNames.length]}` : name || `Player ${index + 1}`,
+  avatar: isBot ? "🤖" : avatars[index % avatars.length],
+  color: colors[index % colors.length],
+  score: 0,
+  isBot,
+});
 
 export const useAppStore = create<AppState>((set, get) => ({
   lang: storageService.getLang(),
-  players: initialPlayers.length
-    ? initialPlayers
-    : [
-        { id: crypto.randomUUID(), name: "Youssef", avatar: "😎", color: "#f97316", score: 0 },
-        { id: crypto.randomUUID(), name: "Amira", avatar: "🤩", color: "#ec4899", score: 0 },
-      ],
+  players: initialPlayers,
   history: storageService.getHistory(),
   setLang: (lang) => {
     storageService.setLang(lang);
@@ -38,10 +55,26 @@ export const useAppStore = create<AppState>((set, get) => ({
   addPlayer: (name) =>
     set((state) => {
       const index = state.players.length;
-      const players = [
-        ...state.players,
-        { id: crypto.randomUUID(), name: name || `Player ${index + 1}`, avatar: avatars[index % avatars.length], color: colors[index % colors.length], score: 0 },
-      ];
+      const players = [...state.players, createPlayer(index, name)];
+      storageService.setPlayers(players);
+      return { players };
+    }),
+  addBot: () =>
+    set((state) => {
+      const players = [...state.players, createPlayer(state.players.length, undefined, true)];
+      storageService.setPlayers(players);
+      return { players };
+    }),
+  addBotsTo: (count) =>
+    set((state) => {
+      const missing = Math.max(0, count - state.players.length);
+      const players = [...state.players, ...Array.from({ length: missing }, (_, i) => createPlayer(state.players.length + i, undefined, true))];
+      storageService.setPlayers(players);
+      return { players };
+    }),
+  removeBots: () =>
+    set((state) => {
+      const players = state.players.filter((player) => !player.isBot);
       storageService.setPlayers(players);
       return { players };
     }),
@@ -72,15 +105,18 @@ export const useAppStore = create<AppState>((set, get) => ({
   setActiveGame: (activeGame) => set({ activeGame }),
   saveResult: (gameId) => {
     const players = [...get().players].sort((a, b) => b.score - a.score);
+    const hasScore = players.some((player) => player.score > 0);
     const result: SessionResult = {
       id: crypto.randomUUID(),
       gameId,
       date: new Date().toISOString(),
       scores: players.map(({ id, name, score }) => ({ playerId: id, name, score })),
-      winner: players[0]?.name,
+      winner: hasScore ? players[0]?.name : undefined,
     };
-    storageService.addHistory(result);
-    set({ history: storageService.getHistory() });
+    if (hasScore) {
+      storageService.addHistory(result);
+      set({ history: storageService.getHistory() });
+    }
     return result;
   },
 }));

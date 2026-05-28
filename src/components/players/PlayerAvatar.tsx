@@ -8,7 +8,7 @@ export function PlayerAvatar({ player, compact = false }: { player: Player; comp
       </div>
       <div className="min-w-0">
         <p className="truncate font-black text-zinc-950">{player.name}</p>
-        <p className="text-xs font-bold text-zinc-500">{player.score} pts</p>
+        <p className="text-xs font-bold text-zinc-500">{player.isBot ? "demo bot · " : ""}{player.score} pts</p>
       </div>
     </div>
   );

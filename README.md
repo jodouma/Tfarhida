@@ -11,10 +11,12 @@ https://jodouma.github.io/Tfarhida/
 ## Fonctionnalités
 
 - Mode local immédiat avec joueurs, avatars, scores et sauvegarde `localStorage`
+- Aucun faux joueur créé automatiquement; les bots démo doivent être ajoutés explicitement
 - Cinq mini-jeux MVP: Impostor, Action ou Vérité, Tu préfères, Devine le mot, Quiz culturel tunisien
 - Interface multilingue: `tn`, `fr`, `en`
 - UI responsive, mobile-first, visuelle et animée avec Framer Motion
 - Architecture Firebase Auth + Firestore optionnelle pour les salles en ligne
+- Liens de partage locaux pour ouvrir le même jeu sur un autre appareil
 - Déploiement GitHub Pages avec base `/Tfarhida/` et `HashRouter`
 
 ## Stack
@@ -61,6 +63,12 @@ Ensuite, vérifier l'action GitHub Pages dans l'onglet **Actions** du dépôt.
 ## Firebase optionnel
 
 Copier `.env.example` vers `.env.local`, remplir les clés publiques Firebase, activer Auth email/password et Firestore. Sans ces variables, le mode en ligne est désactivé proprement et le mode local reste fonctionnel.
+
+Important :
+
+- Un lien local ouvre seulement le même jeu; les scores restent locaux à chaque appareil.
+- Un lien de salle `/#/room/:roomCode` devient temps réel seulement avec Firebase configuré.
+- L'application ne stocke jamais de mots de passe dans `localStorage`.
 
 ## Structure
 
