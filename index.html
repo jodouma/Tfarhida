@@ -9,6 +9,23 @@
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      (function () {
+        var isPages = window.location.hostname.endsWith("github.io");
+        var base = isPages ? "/Tfarhida/" : "/";
+
+        if (isPages) {
+          var css = document.createElement("link");
+          css.rel = "stylesheet";
+          css.href = base + "assets/app.css";
+          document.head.appendChild(css);
+        }
+
+        var script = document.createElement("script");
+        script.type = "module";
+        script.src = isPages ? base + "assets/app.js" : "/src/main.tsx";
+        document.body.appendChild(script);
+      })();
+    </script>
   </body>
 </html>
