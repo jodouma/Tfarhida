@@ -17,6 +17,10 @@
 - [x] Rapport Markdown présent.
 - [x] Rapport DOCX présent.
 - [x] Rapport PDF présent.
+- [x] Présentation PowerPoint PPTX présente.
+- [x] Validation `npm run typecheck` passée.
+- [x] Validation `npm run lint` passée.
+- [x] Validation `npm run build` passée.
 - [x] GitHub Pages blank page corrigé par bundle racine `assets/app.js`.
 - [x] `dist/index.html` ne doit pas référencer `/src/main.tsx`.
 - [x] URL publique documentée : https://jodouma.github.io/Tfarhida/
