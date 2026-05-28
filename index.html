@@ -11,10 +11,10 @@
     <div id="root"></div>
     <script>
       (function () {
-        var isPages = window.location.hostname.endsWith("github.io");
-        var base = isPages ? "/Tfarhida/" : "/";
+        var isBuiltPage = window.location.hostname.endsWith("github.io") || window.location.pathname.indexOf("/Tfarhida/") === 0;
+        var base = isBuiltPage ? "/Tfarhida/" : "/";
 
-        if (isPages) {
+        if (isBuiltPage) {
           var css = document.createElement("link");
           css.rel = "stylesheet";
           css.href = base + "assets/app.css";
@@ -23,7 +23,7 @@
 
         var script = document.createElement("script");
         script.type = "module";
-        script.src = isPages ? base + "assets/app.js" : "/" + "src" + "/main.tsx";
+        script.src = isBuiltPage ? base + "assets/app.js" : "/" + "src" + "/main.tsx";
         document.body.appendChild(script);
       })();
     </script>
