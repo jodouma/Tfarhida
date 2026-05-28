@@ -1,5 +1,12 @@
 # Tests du mode en ligne
 
+Contexte de validation actuel :
+
+- Firebase project ID : `tfarhida-d1f5c`
+- Firestore rules : déployées avec succès
+- Build GitHub Pages : doit recevoir les variables `VITE_FIREBASE_*` via GitHub Actions
+- Auth anonyme : doit être activé dans Firebase Console pour exécuter les tests réels
+
 ## Sans Firebase
 
 - Ouvrir `/#/online`.
@@ -32,6 +39,43 @@ Scénario création :
 11. Vérifier que les résultats et scores se synchronisent.
 12. Démarrer une manche suivante.
 13. Quitter la salle.
+
+## Passage validé localement
+
+La validation réelle a été exécutée en deux contexts Playwright, avec :
+
+- création de salle ;
+- join par code ;
+- lobby visible côté hôte et invité ;
+- rafraîchissement invité ;
+- vote croisé ;
+- révélation des résultats ;
+- passage à la manche suivante ;
+- fin de partie ;
+- sortie de salle.
+
+Captures locales disponibles :
+
+- `docs/report/evidence/runtime/01-host-lobby.png`
+- `docs/report/evidence/runtime/02-guest-lobby.png`
+- `docs/report/evidence/runtime/03-host-vote.png`
+- `docs/report/evidence/runtime/05-host-results-round1.png`
+- `docs/report/evidence/runtime/07-host-ended.png`
+
+## Si GitHub CLI ne peut pas gérer les variables
+
+Créer manuellement les variables dans :
+
+GitHub → Settings → Secrets and variables → Actions → Variables
+
+Variables attendues :
+
+- `VITE_FIREBASE_API_KEY`
+- `VITE_FIREBASE_AUTH_DOMAIN`
+- `VITE_FIREBASE_PROJECT_ID`
+- `VITE_FIREBASE_STORAGE_BUCKET`
+- `VITE_FIREBASE_MESSAGING_SENDER_ID`
+- `VITE_FIREBASE_APP_ID`
 
 ## Résultat attendu pour le build
 

@@ -6,6 +6,7 @@ Ce document décrit l’état réel du mode en ligne de Tfarhida après le passa
 
 - Mode local : fonctionnel sans compte et sans Firebase.
 - Mode en ligne : disponible uniquement si les variables `VITE_FIREBASE_*` sont configurées.
+- Projet Firebase réel : `tfarhida-d1f5c`.
 - Jeu en ligne réellement synchronisé dans ce MVP : **Tu préfères ? / Would You Rather**.
 - Les autres jeux restent jouables en mode local. Ils ne sont pas présentés comme multijoueurs temps réel.
 
@@ -17,6 +18,8 @@ Tfarhida reste une application statique compatible GitHub Pages. Le navigateur c
 - Firestore pour synchroniser la salle, les joueurs, les manches, les votes et les scores.
 
 Sans Firebase, l’application affiche une page de configuration requise et ne montre pas de faux formulaire de connexion ni de fausse salle.
+
+La build GitHub Pages expose uniquement des variables publiques `VITE_FIREBASE_*` dans le bundle client. Il n’y a pas de service account ni de clé privée dans ce flux. La vraie barrière de sécurité reste Firebase Auth et les règles Firestore.
 
 Les routes online sont chargées paresseusement (`React.lazy`). Le SDK Firebase est donc placé dans un chunk séparé et n’alourdit pas le chargement initial du mode local.
 
@@ -34,6 +37,7 @@ VITE_FIREBASE_APP_ID=
 ```
 
 Ces valeurs sont les clés publiques de configuration client Firebase. Elles ne doivent pas être confondues avec des clés privées ou fichiers service account.
+Pour GitHub Pages, ces mêmes valeurs sont injectées dans GitHub Actions via `vars.*`.
 
 ## Modèle Firestore
 
@@ -104,3 +108,4 @@ rooms/{roomCode}/private/{uid}
 - Le client est une application frontend : il ne faut pas présenter ce mode comme anti-triche ou production-grade.
 - Les données privées de jeux comme “Qui est l’imposteur” nécessitent un modèle `private/{uid}` et des règles plus strictes avant une vraie mise en ligne.
 - Les règles Firestore fournies sont adaptées à une démo MVP authentifiée, mais elles doivent être revues avant une utilisation publique large.
+- Les domaines autorisés à prévoir dans Firebase Console sont `jodouma.github.io`, `localhost` et `127.0.0.1`.

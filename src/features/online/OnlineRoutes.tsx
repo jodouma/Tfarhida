@@ -195,6 +195,19 @@ export function RoomLinkPage() {
       const displayName = name.trim() || (lang === "tn" ? "لاعب أونلاين" : lang === "fr" ? "Joueur en ligne" : "Online player");
       const user = await authService.guest(displayName);
       await roomService.joinRoom(code, user.uid, { displayName });
+      setUid(user.uid);
+      setPlayers((current) => current.some((player) => player.uid === user.uid) ? current : [
+        ...current,
+        {
+          uid: user.uid,
+          displayName,
+          avatar: "😄",
+          color: "#f97316",
+          isHost: false,
+          online: true,
+          score: 0,
+        },
+      ]);
     } catch (err) {
       setError(err instanceof Error ? err.message : String(err));
     }

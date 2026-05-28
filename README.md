@@ -80,6 +80,14 @@ Ensuite, vérifier l'action GitHub Pages dans l'onglet **Actions** du dépôt.
 
 Copier `.env.example` vers `.env.local`, remplir les clés publiques Firebase, activer **Authentication Anonymous** et Firestore. Sans ces variables, le mode en ligne affiche un état de configuration requise et le mode local reste fonctionnel.
 
+Projet Firebase utilisé pour le MVP :
+
+- Project ID : `tfarhida-d1f5c`
+- App Web : `Tfarhida Web`
+- Firestore rules : déployées avec succès sur le projet réel
+
+Pour la mise en ligne GitHub Pages, les clés Vite `VITE_FIREBASE_*` sont exposées comme variables publiques dans GitHub Actions. Il n’y a pas de service account privé dans ce frontend statique. La sécurité réelle repose sur Firebase Auth, les règles Firestore et les domaines autorisés (`jodouma.github.io`, `localhost`, `127.0.0.1`).
+
 Important :
 
 - Un lien local ouvre seulement le même jeu; les scores restent locaux à chaque appareil.

@@ -63,6 +63,10 @@ function toPlayer(uid: string, profile: PlayerProfile, isHost = false, index = 0
   };
 }
 
+function seedFromUid(uid: string) {
+  return uid.split("").reduce((sum, char) => sum + char.charCodeAt(0), 0);
+}
+
 function buildRound(roundIndex: number): OnlineRound {
   const prompt = wouldQuestions[roundIndex % wouldQuestions.length];
   return {
@@ -111,9 +115,8 @@ export const roomService = {
     const ref = roomRef(code);
     const snapshot = await getDoc(ref);
     if (!snapshot.exists()) throw new Error("Room not found.");
-    const playersSnapshot = await getDocs(collection(ref, "players"));
     const room = snapshot.data() as OnlineRoom;
-    await setDoc(playerDoc(code, uid), toPlayer(uid, profile, uid === room.hostUid, playersSnapshot.size), { merge: true });
+    await setDoc(playerDoc(code, uid), toPlayer(uid, profile, uid === room.hostUid, seedFromUid(uid)), { merge: true });
     return { ...(snapshot.data() as OnlineRoom), code: cleanCode(code) };
   },
 

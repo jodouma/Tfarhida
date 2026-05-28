@@ -248,6 +248,10 @@ L’architecture est composée d’un frontend React/Vite hébergé statiquement
 - **Services :** `firebaseConfig.ts`, `firebase.ts`, `authService.ts`, `roomService.ts`.
 - **Déploiement :** Vite, GitHub Actions, GitHub Pages.
 
+La configuration Firebase de production académique repose sur le projet `tfarhida-d1f5c`. Les règles Firestore ont été déployées avec succès sur ce projet. La build GitHub Pages n’utilise aucune clé privée : les valeurs `VITE_FIREBASE_*` sont injectées comme variables publiques dans GitHub Actions, tandis que la sécurité effective est assurée par Firebase Auth et les règles Firestore. Les domaines à autoriser dans Firebase Console sont `jodouma.github.io`, `localhost` et `127.0.0.1`.
+
+Le mode en ligne a également été validé localement dans deux contexts Playwright distincts. Le scénario vérifié couvre la création de salle, le join par code, l’affichage du lobby côté hôte et invité, le rafraîchissement de l’invité, le vote croisé, la révélation des résultats, le passage à la manche suivante, la fin de partie et la sortie de salle. Les captures de preuve sont archivées dans `docs/report/evidence/runtime/`.
+
 ## 4.2.1 Séparation du bundle online
 
 Après l’intégration Firebase, le build principal avait augmenté. Pour préserver la rapidité du mode local, les routes `/online` et `/room/:code` sont chargées avec `React.lazy`. Le module `firebaseConfig.ts` ne contient que la lecture des variables d’environnement, tandis que `firebase.ts` importe réellement le SDK Firebase. Ainsi, le SDK Firebase est placé dans le chunk `OnlineRoutes.js` et n’alourdit pas le bundle principal `app.js`.
