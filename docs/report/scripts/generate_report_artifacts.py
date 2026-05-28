@@ -438,7 +438,7 @@ def add_cover(doc: Document) -> None:
     grid.alignment = WD_TABLE_ALIGNMENT.CENTER
     grid.autofit = False
     pairs = [
-        ("Etudiantes", "Yosra El Hadj Brayek\nWassim Chommakh"),
+        ("Etudiants", "Yosra El Hadj Brayek\nWassim Chommakh"),
         ("Encadrante", "Madame Imen Herzi"),
         ("Etablissement", "Leaders University - Nabeul"),
         ("Annee universitaire", "2025-2026"),
@@ -787,7 +787,7 @@ def render_pdf(blocks: Sequence[Block], output_path: Path) -> None:
     )
 
     metadata = [
-        ("Etudiantes", "Yosra El Hadj Brayek<br/>Wassim Chommakh"),
+        ("Etudiants", "Yosra El Hadj Brayek<br/>Wassim Chommakh"),
         ("Encadrante", "Madame Imen Herzi"),
         ("Etablissement", "Leaders University - Nabeul"),
         ("Annee universitaire", "2025-2026"),
@@ -935,7 +935,7 @@ def render_pdf(blocks: Sequence[Block], output_path: Path) -> None:
         canvas.drawCentredString(A4[0] / 2, 1.0 * cm, f"{canvas.getPageNumber()}")
         canvas.restoreState()
 
-    doc.build(story, onFirstPage=draw_page_number, onLaterPages=draw_page_number)
+    doc.build(story, onFirstPage=lambda canvas, pdf_doc: None, onLaterPages=draw_page_number)
 
 
 def set_docx_metadata(docx_path: Path) -> None:

@@ -49,7 +49,23 @@ The project covers static frontend architecture, local player and session persis
 
 # Table des matieres
 
-> La table des matieres detaillee est generee automatiquement lors de l'export DOCX/PDF.
+- Remerciements
+- Resume
+- Abstract
+- Liste des figures
+- Liste des tableaux
+- Liste des abreviations
+- Introduction generale
+- Chapitre 1 — Cadre general du projet
+- Chapitre 2 — Etude de l'existant, inspiration et justification de la solution proposee
+- Chapitre 3 — Analyse et specification des besoins
+- Chapitre 4 — Conception
+- Chapitre 5 — Realisation technique
+- Chapitre 6 — Tests et validation
+- Chapitre 7 — Deploiement
+- Conclusion generale
+- Bibliographie / Webographie
+- Annexes
 
 # Liste des figures
 
