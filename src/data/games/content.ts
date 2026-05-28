@@ -1,6 +1,6 @@
 import type { GameMeta, GuessWord, ImpostorPack, QuizQuestion, TruthDarePrompt, WouldQuestion } from "../../types";
 
-const img = (name: string) => `/assets/examples/${name}`;
+const img = (name: string) => `${import.meta.env.BASE_URL}assets/examples/${name}`;
 
 export const gameCatalog: GameMeta[] = [
   {

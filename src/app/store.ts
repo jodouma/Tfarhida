@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import type { GameId, Lang, Player, SessionResult } from "../types";
 import { storageService } from "../services/storageService";
+import { createId } from "../utils/id";
 
 const avatars = ["😄", "😎", "🤩", "🥳", "🧠", "🔥", "🎧", "⚽", "🍋", "🌶️"];
 const colors = ["#f97316", "#ec4899", "#8b5cf6", "#14b8a6", "#22c55e", "#0ea5e9", "#ef4444", "#f59e0b"];
@@ -36,7 +37,7 @@ function migratePlayers(players: Player[]) {
 const initialPlayers = migratePlayers(storageService.getPlayers());
 
 const createPlayer = (index: number, name?: string, isBot = false): Player => ({
-  id: crypto.randomUUID(),
+  id: createId(),
   name: isBot ? `🤖 ${botNames[index % botNames.length]}` : name || `Player ${index + 1}`,
   avatar: isBot ? "🤖" : avatars[index % avatars.length],
   color: colors[index % colors.length],
@@ -107,7 +108,7 @@ export const useAppStore = create<AppState>((set, get) => ({
     const players = [...get().players].sort((a, b) => b.score - a.score);
     const hasScore = players.some((player) => player.score > 0);
     const result: SessionResult = {
-      id: crypto.randomUUID(),
+      id: createId(),
       gameId,
       date: new Date().toISOString(),
       scores: players.map(({ id, name, score }) => ({ playerId: id, name, score })),
