@@ -2,6 +2,12 @@
 
 Mini-jeux sociaux tunisiens, construits comme MVP PFE/PFA avec React, Vite, TypeScript, Tailwind CSS et Firebase optionnel.
 
+## Public URL
+
+Application déployée sur GitHub Pages :
+
+https://jodouma.github.io/Tfarhida/
+
 ## Fonctionnalités
 
 - Mode local immédiat avec joueurs, avatars, scores et sauvegarde `localStorage`
@@ -35,6 +41,22 @@ npm run build
 ## Déploiement GitHub Pages
 
 Le workflow `.github/workflows/deploy.yml` construit `dist/` et le publie sur GitHub Pages depuis `main`.
+
+URL publique attendue :
+
+```text
+https://jodouma.github.io/Tfarhida/
+```
+
+La configuration Vite utilise `/Tfarhida/` en production et `/` en développement local.
+
+Pour déployer :
+
+```bash
+git push origin main
+```
+
+Ensuite, vérifier l'action GitHub Pages dans l'onglet **Actions** du dépôt.
 
 ## Firebase optionnel
 
