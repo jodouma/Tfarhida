@@ -2,10 +2,16 @@
 
 Les fichiers `.mmd` sont les sources Mermaid utilisées par le rapport PFE.
 
-Les exports PNG existants `01` à `04` proviennent du passage précédent. Les sources `05` à `10` ont été ajoutées pour renforcer le chapitre Conception.
+Les exports PNG existent désormais pour `01` à `10`. Les sources `05` à `10` ont été ajoutées pour renforcer le chapitre Conception.
 
-Des versions SVG propres ont été générées pour `05` à `10` afin de disposer d’assets vectoriels lisibles pour le rapport :
+Des versions SVG propres ont également été générées pour `05` à `10` afin de disposer d’assets vectoriels lisibles pour le rapport :
 
+- `05-modele-domaine.png`
+- `06-sequence-creation-salle.png`
+- `07-sequence-rejoindre-salle.png`
+- `08-sequence-vote-revelation.png`
+- `09-modele-firestore.png`
+- `10-pipeline-deploiement.png`
 - `05-modele-domaine.svg`
 - `06-sequence-creation-salle.svg`
 - `07-sequence-rejoindre-salle.svg`
@@ -24,4 +30,4 @@ npx @mermaid-js/mermaid-cli -i docs/assets/report/diagrams/09-modele-firestore.m
 npx @mermaid-js/mermaid-cli -i docs/assets/report/diagrams/10-pipeline-deploiement.mmd -o docs/assets/report/diagrams/10-pipeline-deploiement.svg
 ```
 
-Dans l’environnement courant, l’appel `npx @mermaid-js/mermaid-cli --version` n’a pas terminé dans un délai raisonnable. Les SVG ci-dessus ont donc été produits comme équivalents vectoriels lisibles, tandis que les sources Mermaid restent la référence éditable.
+Dans l’environnement courant, l’appel `npx @mermaid-js/mermaid-cli --version` n’a pas terminé dans un délai raisonnable. Les SVG ci-dessus ont donc été produits comme équivalents vectoriels lisibles, tandis que les exports PNG ont été normalisés pour faciliter l’export DOCX/PDF et les sources Mermaid restent la référence éditable.

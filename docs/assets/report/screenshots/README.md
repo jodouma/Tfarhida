@@ -1,6 +1,6 @@
 # Inventaire des captures d’écran
 
-Les captures existantes couvrent le MVP local et l’état Firebase non configuré.
+Les captures existantes couvrent le MVP local, l’état Firebase non configuré et le test runtime Firebase réel validé localement.
 
 | Fichier | Usage rapport | Statut |
 |---|---|---|
@@ -18,13 +18,13 @@ Les captures existantes couvrent le MVP local et l’état Firebase non configur
 | `12-online-firebase-fallback.png` | Firebase non configuré | Présent |
 | `13-mobile-home.png` | Accueil mobile | Présent |
 | `14-mobile-gameplay.png` | Gameplay mobile | Présent |
+| `online-lobby-host.png` | Lobby online côté hôte | Présent |
+| `online-lobby-guest.png` | Lobby online côté invité | Présent |
+| `online-vote-host.png` | Vote online côté hôte | Présent |
+| `online-results-host.png` | Résultats online côté hôte | Présent |
+| `online-results-guest.png` | Résultats online côté invité | Présent |
+| `online-ended-host.png` | Fin de partie online côté hôte | Présent |
 
-## Captures à régénérer après vrai test Firebase
+## Source des captures runtime
 
-Les captures suivantes ne doivent être ajoutées qu’après configuration réelle de Firebase et test deux navigateurs :
-
-- `15-online-lobby.png`
-- `16-online-would-you-rather-vote.png`
-- `17-online-would-you-rather-results.png`
-
-Dans l’environnement courant, aucun `.env.local` n’est disponible et aucun navigateur Chromium n’est installé. Les captures online temps réel ne sont donc pas inventées.
+Les captures online sélectionnées proviennent du test réel à deux sessions navigateur exécuté localement via Playwright et archivé dans `docs/report/evidence/runtime/`.
