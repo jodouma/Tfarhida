@@ -1,0 +1,12 @@
+sequenceDiagram
+  actor H as Hôte
+  participant UI as Interface React
+  participant Auth as Firebase Auth
+  participant DB as Firestore
+  H->>UI: Saisir pseudo + créer salle
+  UI->>Auth: signInAnonymously()
+  Auth-->>UI: uid hôte
+  UI->>DB: create rooms/{code}
+  UI->>DB: create rooms/{code}/players/{uid}
+  DB-->>UI: snapshots room + players
+  UI-->>H: Afficher lobby + lien #/room/CODE

@@ -1,12 +1,37 @@
-const config = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
-};
+import { initializeApp, type FirebaseApp } from "firebase/app";
+import { getAuth, type Auth } from "firebase/auth";
+import { getFirestore, type Firestore } from "firebase/firestore";
+import { firebaseConfig, isFirebaseConfigured } from "./firebaseConfig";
 
-export const isFirebaseConfigured = Object.values(config).every(Boolean);
+let app: FirebaseApp | undefined;
+let auth: Auth | undefined;
+let db: Firestore | undefined;
 
-export const firebaseConfig = config;
+export function getFirebaseApp() {
+  if (!isFirebaseConfigured) return undefined;
+  if (!app) app = initializeApp(firebaseConfig);
+  return app;
+}
+
+export function getFirebaseAuth() {
+  const firebaseApp = getFirebaseApp();
+  if (!firebaseApp) return undefined;
+  if (!auth) auth = getAuth(firebaseApp);
+  return auth;
+}
+
+export function getFirebaseDb() {
+  const firebaseApp = getFirebaseApp();
+  if (!firebaseApp) return undefined;
+  if (!db) db = getFirestore(firebaseApp);
+  return db;
+}
+
+export function requireFirebase() {
+  const firebaseAuth = getFirebaseAuth();
+  const firebaseDb = getFirebaseDb();
+  if (!firebaseAuth || !firebaseDb) {
+    throw new Error("Firebase is not configured. Add VITE_FIREBASE_* values to .env.local.");
+  }
+  return { auth: firebaseAuth, db: firebaseDb };
+}

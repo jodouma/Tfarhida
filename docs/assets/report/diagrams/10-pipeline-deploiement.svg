@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#334155"/></marker><filter id="shadow"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.12"/></filter></defs>
+<rect width="100%" height="100%" fill="#fff7ed"/>
+<text x="60" y="58" font-family="Arial" font-size="30" font-weight="700" fill="#1f2937">Pipeline de déploiement</text>
+<rect x="60" y="300" width="180" height="80" rx="18" fill="#f97316" stroke="#ffffff" stroke-width="3" filter="url(#shadow)"/>
+<text x="150.0" y="328.0" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#fff">Développeur</text>
+<text x="150.0" y="353.0" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#fff">git push main</text>
+<rect x="285" y="300" width="180" height="80" rx="18" fill="#db2777" stroke="#ffffff" stroke-width="3" filter="url(#shadow)"/>
+<text x="375.0" y="328.0" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#fff">GitHub</text>
+<text x="375.0" y="353.0" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#fff">Repository</text>
+<rect x="510" y="300" width="220" height="80" rx="18" fill="#7c3aed" stroke="#ffffff" stroke-width="3" filter="url(#shadow)"/>
+<text x="620.0" y="328.0" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#fff">GitHub Actions</text>
+<text x="620.0" y="353.0" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#fff">npm ci + build</text>
+<rect x="775" y="300" width="170" height="80" rx="18" fill="#2563eb" stroke="#ffffff" stroke-width="3" filter="url(#shadow)"/>
+<text x="860.0" y="328.0" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#fff">dist/</text>
+<text x="860.0" y="353.0" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#fff">assets</text>
+<rect x="990" y="300" width="170" height="80" rx="18" fill="#0f766e" stroke="#ffffff" stroke-width="3" filter="url(#shadow)"/>
+<text x="1075.0" y="328.0" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#fff">GitHub Pages</text>
+<text x="1075.0" y="353.0" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#fff">/Tfarhida/</text>
+<rect x="510" y="520" width="220" height="80" rx="18" fill="#16a34a" stroke="#ffffff" stroke-width="3" filter="url(#shadow)"/>
+<text x="620.0" y="548.0" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#fff">Navigateur</text>
+<text x="620.0" y="573.0" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#fff">HashRouter</text>
+<line x1="150.0" y1="340.0" x2="375.0" y2="340.0" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="262.5" y="330.0" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700" fill="#334155">push</text>
+<line x1="375.0" y1="340.0" x2="620.0" y2="340.0" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="497.5" y="330.0" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700" fill="#334155">trigger</text>
+<line x1="620.0" y1="340.0" x2="860.0" y2="340.0" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="740.0" y="330.0" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700" fill="#334155">build</text>
+<line x1="860.0" y1="340.0" x2="1075.0" y2="340.0" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="967.5" y="330.0" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700" fill="#334155">deploy</text>
+<line x1="1075.0" y1="340.0" x2="620.0" y2="560.0" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="847.5" y="440.0" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700" fill="#334155">serve</text>
+</svg>

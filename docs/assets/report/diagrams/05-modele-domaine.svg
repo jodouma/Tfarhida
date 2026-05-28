@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#334155"/></marker><filter id="shadow"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.12"/></filter></defs>
+<rect width="100%" height="100%" fill="#fff7ed"/>
+<text x="60" y="58" font-family="Arial" font-size="30" font-weight="700" fill="#1f2937">Modèle de domaine Tfarhida</text>
+<rect x="70" y="130" width="220" height="90" rx="18" fill="#f97316" stroke="#ffffff" stroke-width="3" filter="url(#shadow)"/>
+<text x="180.0" y="163.0" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#fff">Player</text>
+<text x="180.0" y="188.0" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#fff">id, name, score</text>
+<rect x="490" y="130" width="220" height="90" rx="18" fill="#db2777" stroke="#ffffff" stroke-width="3" filter="url(#shadow)"/>
+<text x="600.0" y="163.0" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#fff">Game</text>
+<text x="600.0" y="188.0" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#fff">id, minPlayers</text>
+<rect x="910" y="130" width="220" height="90" rx="18" fill="#0f766e" stroke="#ffffff" stroke-width="3" filter="url(#shadow)"/>
+<text x="1020.0" y="163.0" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#fff">SessionHistory</text>
+<text x="1020.0" y="188.0" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#fff">winner, scores</text>
+<rect x="250" y="360" width="240" height="90" rx="18" fill="#7c3aed" stroke="#ffffff" stroke-width="3" filter="url(#shadow)"/>
+<text x="370.0" y="393.0" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#fff">OnlineRoom</text>
+<text x="370.0" y="418.0" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#fff">code, phase</text>
+<rect x="610" y="360" width="240" height="90" rx="18" fill="#2563eb" stroke="#ffffff" stroke-width="3" filter="url(#shadow)"/>
+<text x="730.0" y="393.0" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#fff">OnlineRound</text>
+<text x="730.0" y="418.0" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#fff">prompt, phase</text>
+<rect x="910" y="520" width="220" height="90" rx="18" fill="#16a34a" stroke="#ffffff" stroke-width="3" filter="url(#shadow)"/>
+<text x="1020.0" y="553.0" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#fff">Submission</text>
+<text x="1020.0" y="578.0" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#fff">uid, value</text>
+<line x1="180.0" y1="175.0" x2="1020.0" y2="175.0" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="600.0" y="165.0" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700" fill="#334155">scores</text>
+<line x1="600.0" y1="175.0" x2="1020.0" y2="175.0" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="810.0" y="165.0" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700" fill="#334155">played</text>
+<line x1="370.0" y1="405.0" x2="180.0" y2="175.0" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="275.0" y="280.0" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700" fill="#334155">players</text>
+<line x1="370.0" y1="405.0" x2="730.0" y2="405.0" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="550.0" y="395.0" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700" fill="#334155">rounds</text>
+<line x1="730.0" y1="405.0" x2="1020.0" y2="565.0" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="875.0" y="475.0" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700" fill="#334155">votes</text>
+</svg>

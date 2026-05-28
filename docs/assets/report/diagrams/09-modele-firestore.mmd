@@ -1,0 +1,12 @@
+flowchart TB
+  R["rooms/{roomCode}<br/>code, gameId, hostUid, phase, scores"]
+  P["players/{uid}<br/>displayName, avatar, online, score"]
+  RO["rounds/{roundId}<br/>phase, promptId, roundIndex"]
+  S["submissions/{uid}<br/>value, submittedAt"]
+  PR["private/{uid}<br/>payload privé par joueur"]
+  E["events/{eventId}<br/>journal optionnel"]
+  R --> P
+  R --> RO
+  RO --> S
+  R --> PR
+  R --> E

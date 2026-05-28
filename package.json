@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@vitejs/plugin-react": "1.3.2",
+    "firebase": "^10.14.1",
     "framer-motion": "7.10.3",
     "lucide-react": "0.468.0",
     "react": "18.2.0",

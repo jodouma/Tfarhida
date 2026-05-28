@@ -1,0 +1,16 @@
+sequenceDiagram
+  actor P as Joueur
+  participant UI as Écran Would You Rather
+  participant DB as Firestore
+  actor H as Hôte
+  P->>UI: Taper choix A/B
+  UI->>DB: set submissions/{uid}
+  DB-->>UI: Snapshot submissions
+  alt Tous les votes reçus
+    H->>DB: Transaction révélation
+    DB->>DB: Calcul majorité + scores
+    DB-->>UI: round.phase = results
+    UI-->>P: Afficher résultats synchronisés
+  else Votes incomplets
+    UI-->>P: Attente des autres joueurs
+  end

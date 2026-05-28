@@ -1,0 +1,42 @@
+classDiagram
+  class Player {
+    string id
+    string name
+    string avatar
+    string color
+    number score
+    boolean isBot
+  }
+  class Game {
+    string id
+    LocalizedText name
+    number minPlayers
+    string image
+  }
+  class SessionHistory {
+    string id
+    string gameId
+    string date
+    string winner
+  }
+  class OnlineRoom {
+    string code
+    string gameId
+    string hostUid
+    string phase
+    number roundIndex
+  }
+  class OnlineRound {
+    string roundId
+    string phase
+    string promptId
+  }
+  class OnlineSubmission {
+    string uid
+    string value
+  }
+  Player "1..*" --> SessionHistory
+  Game "1" --> SessionHistory
+  OnlineRoom "1" --> "1..*" Player
+  OnlineRoom "1" --> "0..*" OnlineRound
+  OnlineRound "1" --> "0..*" OnlineSubmission

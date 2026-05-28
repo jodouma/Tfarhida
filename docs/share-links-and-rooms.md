@@ -26,4 +26,6 @@ Tfarhida ne simule pas le multijoueur temps réel. Le local reste local; le real
 
 ## Statut actuel
 
-Dans la livraison finale, le mode local est fonctionnel. Le mode salle en ligne est architecturalement préparé, mais il reste dépendant d’une configuration Firebase réelle avant d’être utilisable en production.
+Dans la livraison actuelle, le mode local est fonctionnel. Le mode salle en ligne devient utilisable lorsque Firebase est configuré. Le périmètre temps réel validé couvre **Tu préfères ?** : joueurs, votes, résultats et scores.
+
+Les autres mini-jeux restent locaux. Ils pourront rejoindre le mode online plus tard en ajoutant des phases Firestore adaptées à chaque mécanique.

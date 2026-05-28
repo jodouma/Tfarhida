@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#334155"/></marker></defs>
+<rect width="100%" height="100%" fill="#f8fafc"/>
+<text x="60" y="58" font-family="Arial" font-size="30" font-weight="700" fill="#1f2937">Séquence - création de salle</text>
+<rect x="10.0" y="88" width="140" height="52" rx="14" fill="#f97316"/>
+<text x="80.0" y="120" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#fff">Hôte</text>
+<line x1="80.0" y1="145" x2="80.0" y2="650" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6 6"/>
+<rect x="356.6666666666667" y="88" width="140" height="52" rx="14" fill="#f97316"/>
+<text x="426.6666666666667" y="120" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#fff">Interface React</text>
+<line x1="426.6666666666667" y1="145" x2="426.6666666666667" y2="650" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6 6"/>
+<rect x="703.3333333333334" y="88" width="140" height="52" rx="14" fill="#f97316"/>
+<text x="773.3333333333334" y="120" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#fff">Firebase Auth</text>
+<line x1="773.3333333333334" y1="145" x2="773.3333333333334" y2="650" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6 6"/>
+<rect x="1050.0" y="88" width="140" height="52" rx="14" fill="#f97316"/>
+<text x="1120.0" y="120" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#fff">Firestore</text>
+<line x1="1120.0" y1="145" x2="1120.0" y2="650" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6 6"/>
+<line x1="80.0" y1="185" x2="426.6666666666667" y2="185" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="103.33333333333334" y="157" width="300" height="22" fill="#f8fafc"/>
+<text x="253.33333333333334" y="174" text-anchor="middle" font-family="Arial" font-size="14" fill="#1f2937">pseudo + créer</text>
+<line x1="426.6666666666667" y1="247" x2="773.3333333333334" y2="247" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="450.0" y="219" width="300" height="22" fill="#f8fafc"/>
+<text x="600.0" y="236" text-anchor="middle" font-family="Arial" font-size="14" fill="#1f2937">signInAnonymously</text>
+<line x1="773.3333333333334" y1="309" x2="426.6666666666667" y2="309" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="450.0" y="281" width="300" height="22" fill="#f8fafc"/>
+<text x="600.0" y="298" text-anchor="middle" font-family="Arial" font-size="14" fill="#1f2937">uid hôte</text>
+<line x1="426.6666666666667" y1="371" x2="1120.0" y2="371" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="623.3333333333333" y="343" width="300" height="22" fill="#f8fafc"/>
+<text x="773.3333333333334" y="360" text-anchor="middle" font-family="Arial" font-size="14" fill="#1f2937">create rooms/{code}</text>
+<line x1="426.6666666666667" y1="433" x2="1120.0" y2="433" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="623.3333333333333" y="405" width="300" height="22" fill="#f8fafc"/>
+<text x="773.3333333333334" y="422" text-anchor="middle" font-family="Arial" font-size="14" fill="#1f2937">create players/{uid}</text>
+<line x1="1120.0" y1="495" x2="426.6666666666667" y2="495" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="623.3333333333333" y="467" width="300" height="22" fill="#f8fafc"/>
+<text x="773.3333333333334" y="484" text-anchor="middle" font-family="Arial" font-size="14" fill="#1f2937">snapshots</text>
+<line x1="426.6666666666667" y1="557" x2="80.0" y2="557" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="103.33333333333334" y="529" width="300" height="22" fill="#f8fafc"/>
+<text x="253.33333333333334" y="546" text-anchor="middle" font-family="Arial" font-size="14" fill="#1f2937">lobby + lien</text>
+</svg>

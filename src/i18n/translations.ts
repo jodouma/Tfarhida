@@ -94,6 +94,23 @@ export const ui: Record<string, LocalizedText> = {
     fr: "Le mode en ligne nécessite une configuration Firebase.",
     en: "Online mode needs Firebase configuration.",
   },
+  displayName: { tn: "إسمك", fr: "Votre pseudo", en: "Display name" },
+  createRoom: { tn: "أعمل غرفة", fr: "Créer une salle", en: "Create room" },
+  joinRoom: { tn: "أدخل لغرفة", fr: "Rejoindre une salle", en: "Join room" },
+  roomCode: { tn: "كود الغرفة", fr: "Code de salle", en: "Room code" },
+  lobby: { tn: "قاعة الانتظار", fr: "Salle d'attente", en: "Lobby" },
+  startOnlineGame: { tn: "إبدا أونلاين", fr: "Démarrer en ligne", en: "Start online game" },
+  waitingPlayers: { tn: "نستناو اللاعبين", fr: "En attente des joueurs", en: "Waiting for players" },
+  waitingHost: { tn: "نستناو صاحب الغرفة", fr: "En attente de l'hôte", en: "Waiting for host" },
+  onlineSupportedGames: {
+    tn: "الأونلاين MVP يخدم توّة مع تختار شنوّة. بقية الألعاب local حتى يتوسع Firebase.",
+    fr: "Le MVP en ligne supporte actuellement Tu préfères ?. Les autres jeux restent locaux jusqu'à l'extension Firebase.",
+    en: "The online MVP currently supports Would You Rather. Other games stay local until the Firebase extension.",
+  },
+  submitVote: { tn: "صوّت", fr: "Soumettre le vote", en: "Submit vote" },
+  waitingVotes: { tn: "نستناو التصويتات", fr: "En attente des votes", en: "Waiting for votes" },
+  roomNotFound: { tn: "الغرفة موش موجودة", fr: "Salle introuvable", en: "Room not found" },
+  leaveRoom: { tn: "أخرج", fr: "Quitter", en: "Leave room" },
   localReady: { tn: "المود المحلي يخدم توّة بلا كونت.", fr: "Le mode local fonctionne sans compte.", en: "Local mode works without an account." },
 };
 

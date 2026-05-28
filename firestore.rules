@@ -1,0 +1,84 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function roomPath(roomId) {
+      return /databases/$(database)/documents/rooms/$(roomId);
+    }
+
+    function playerPath(roomId, uid) {
+      return /databases/$(database)/documents/rooms/$(roomId)/players/$(uid);
+    }
+
+    function isMember(roomId) {
+      return signedIn() && exists(playerPath(roomId, request.auth.uid));
+    }
+
+    function isHost(roomId) {
+      return signedIn() && exists(roomPath(roomId)) && get(roomPath(roomId)).data.hostUid == request.auth.uid;
+    }
+
+    function onlyPlayerPresenceFieldsChanged() {
+      return request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+        "displayName",
+        "avatar",
+        "color",
+        "online",
+        "lastSeenAt"
+      ]);
+    }
+
+    match /rooms/{roomId} {
+      allow create: signedIn() && request.resource.data.hostUid == request.auth.uid;
+
+      // Authenticated users may read a room by code before joining.
+      // This keeps invite links usable in the client-only GitHub Pages MVP.
+      allow read: signedIn();
+
+      allow update: isHost(roomId)
+        && request.resource.data.hostUid == resource.data.hostUid
+        && request.resource.data.code == resource.data.code;
+
+      allow delete: false;
+
+      match /players/{uid} {
+        allow read: isMember(roomId) || isHost(roomId);
+        allow create: signedIn() && request.auth.uid == uid;
+        allow update: signedIn() && (
+          (request.auth.uid == uid && onlyPlayerPresenceFieldsChanged()) ||
+          isHost(roomId)
+        );
+        allow delete: false;
+      }
+
+      match /rounds/{roundId} {
+        allow read: isMember(roomId) || isHost(roomId);
+        allow create, update: isHost(roomId);
+        allow delete: false;
+
+        match /submissions/{uid} {
+          allow read: isMember(roomId) || isHost(roomId);
+          allow create: signedIn() && request.auth.uid == uid && isMember(roomId);
+          allow update: false;
+          allow delete: false;
+        }
+      }
+
+      match /private/{uid} {
+        allow read: signedIn() && request.auth.uid == uid;
+        allow create, update: isHost(roomId);
+        allow delete: false;
+      }
+
+      match /events/{eventId} {
+        allow read: isMember(roomId) || isHost(roomId);
+        allow create: isMember(roomId) || isHost(roomId);
+        allow update, delete: false;
+      }
+    }
+  }
+}

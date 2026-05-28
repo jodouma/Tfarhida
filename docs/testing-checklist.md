@@ -26,6 +26,10 @@
 - Tester lien local de partage: il ouvre le même jeu sans prétendre synchroniser les scores.
 - Tester `/#/room/ABC123` sans Firebase: page claire indiquant que Firebase est requis.
 - Tester page Online sans Firebase: pas de faux login, message de configuration.
+- Tester page Online avec Firebase configuré: authentification anonyme, création de salle, copie du lien.
+- Tester `/#/room/CODE` avec Firebase configuré: rejoindre avec un deuxième navigateur/profil.
+- Tester Would You Rather online: vote sur deux clients, révélation, scores synchronisés, manche suivante.
+- Vérifier que les autres jeux ne sont pas présentés comme online synchronisés.
 - Vérifier qu’aucune image manuscrite de planification n’est visible dans l’application.
 - Vérifier qu’aucune image applicative n’est cassée.
 - Vérifier que GitHub Pages ne sert pas une page blanche.

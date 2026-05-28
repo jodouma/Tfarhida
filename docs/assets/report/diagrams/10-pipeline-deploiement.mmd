@@ -1,0 +1,8 @@
+flowchart LR
+  Dev["Développeur<br/>git push main"]
+  GH["GitHub Repository"]
+  CI["GitHub Actions<br/>npm ci + npm run build"]
+  Dist["dist/<br/>assets/app.js + app.css"]
+  Pages["GitHub Pages<br/>/Tfarhida/"]
+  User["Navigateur utilisateur<br/>HashRouter"]
+  Dev --> GH --> CI --> Dist --> Pages --> User

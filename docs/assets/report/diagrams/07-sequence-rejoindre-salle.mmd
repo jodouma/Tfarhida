@@ -1,0 +1,14 @@
+sequenceDiagram
+  actor J as Participant
+  participant UI as Route #/room/CODE
+  participant Auth as Firebase Auth
+  participant DB as Firestore
+  J->>UI: Ouvrir lien partagé
+  UI->>DB: Lire rooms/{code}
+  UI-->>J: Formulaire pseudo
+  J->>UI: Rejoindre
+  UI->>Auth: signInAnonymously()
+  Auth-->>UI: uid participant
+  UI->>DB: set players/{uid}
+  DB-->>UI: Snapshot joueurs mis à jour
+  UI-->>J: Lobby synchronisé

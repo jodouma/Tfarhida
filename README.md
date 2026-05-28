@@ -30,7 +30,7 @@ Le concept initial **BitBox** a évolué vers **Tfarhida**, une identité plus a
 - Cinq mini-jeux MVP: Impostor, Action ou Vérité, Tu préfères, Devine le mot, Quiz culturel tunisien
 - Interface multilingue: `tn`, `fr`, `en`
 - UI responsive, mobile-first, visuelle et animée avec Framer Motion
-- Architecture Firebase Auth + Firestore optionnelle pour les salles en ligne
+- Mode salle en ligne Firebase optionnel pour **Tu préfères ?**: lobby, lien de salle, votes et scores synchronisés
 - Liens de partage locaux pour ouvrir le même jeu sur un autre appareil
 - Déploiement GitHub Pages avec base `/Tfarhida/` et `HashRouter`
 - Rapport PFE final généré en Markdown, DOCX et PDF dans `docs/report/`
@@ -78,13 +78,14 @@ Ensuite, vérifier l'action GitHub Pages dans l'onglet **Actions** du dépôt.
 
 ## Firebase optionnel
 
-Copier `.env.example` vers `.env.local`, remplir les clés publiques Firebase, activer Auth email/password et Firestore. Sans ces variables, le mode en ligne est désactivé proprement et le mode local reste fonctionnel.
+Copier `.env.example` vers `.env.local`, remplir les clés publiques Firebase, activer **Authentication Anonymous** et Firestore. Sans ces variables, le mode en ligne affiche un état de configuration requise et le mode local reste fonctionnel.
 
 Important :
 
 - Un lien local ouvre seulement le même jeu; les scores restent locaux à chaque appareil.
 - Un lien de salle `/#/room/:roomCode` devient temps réel seulement avec Firebase configuré.
 - L'application ne stocke jamais de mots de passe dans `localStorage`.
+- Dans ce MVP, le jeu online synchronisé est `Would You Rather / Tu préfères ?`; les autres jeux restent locaux.
 
 ## Structure
 
@@ -120,4 +121,5 @@ docs/report/Rapport_PFE_Tfarhida_Yosra_El_Hadj_Brayek.pdf
 
 - Le mode local est fonctionnel.
 - Les salles en ligne temps réel nécessitent une configuration Firebase réelle.
+- Le mode online complet couvre actuellement `Would You Rather`; les autres jeux restent local-only.
 - L’application ne simule pas de faux multijoueur.

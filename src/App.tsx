@@ -1,7 +1,7 @@
-import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { lazy, Suspense, useEffect, useMemo, useState, type ReactNode } from "react";
 import { Link, Route, Routes, useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, Check, Clock, Copy, Crown, LogIn, Plus, RotateCcw, Share2, Sparkles, Trash2, Users, WifiOff, X } from "lucide-react";
+import { ArrowLeft, Check, Clock, Copy, Crown, LogIn, Plus, RotateCcw, Sparkles, Trash2, Users, X } from "lucide-react";
 import { useAppStore } from "./app/store";
 import { GameCard } from "./components/games/GameCard";
 import { Scoreboard } from "./components/games/Scoreboard";
@@ -15,9 +15,12 @@ import { ProgressBar } from "./components/ui/ProgressBar";
 import { Timer } from "./components/ui/Timer";
 import { gameCatalog, guessWords, impostorPacks, quizQuestions, truthDarePrompts, wouldQuestions } from "./data/games/content";
 import { t } from "./i18n/translations";
-import { isFirebaseConfigured } from "./services/firebase";
+import { isFirebaseConfigured } from "./services/firebaseConfig";
 import { storageService } from "./services/storageService";
 import type { GameId, Lang, LocalizedText } from "./types";
+
+const Online = lazy(() => import("./features/online/OnlineRoutes").then((module) => ({ default: module.Online })));
+const RoomLinkPage = lazy(() => import("./features/online/OnlineRoutes").then((module) => ({ default: module.RoomLinkPage })));
 
 const pick = <T,>(items: T[], index: number) => items[index % items.length];
 const tx = (value: LocalizedText, lang: Lang) => value[lang];
@@ -30,7 +33,6 @@ const label = (key: string, lang: Lang, params?: Record<string, string | number>
 };
 const catalogById = (id?: GameId) => gameCatalog.find((game) => game.id === id);
 const publicUrl = "https://jodouma.github.io/Tfarhida/";
-const firebaseDocUrl = "https://github.com/jodouma/Tfarhida/blob/main/docs/firebase-setup.md";
 const localShareUrl = (gameId: GameId, lang: Lang) => `${publicUrl}#/play/${gameId}?lang=${lang}`;
 const levelLabel = (level: string, lang: Lang) => {
   const labels: Record<string, LocalizedText> = {
@@ -474,30 +476,6 @@ function Results() {
   );
 }
 
-function Online() {
-  const lang = useAppStore((s) => s.lang);
-  return (
-    <Card className="mx-auto max-w-2xl space-y-5">
-      <Badge>{t("online", lang)}</Badge>
-      <h1 className="text-4xl font-black">{t("onlineRooms", lang)}</h1>
-      {isFirebaseConfigured ? (
-        <div className="space-y-3"><input className="w-full rounded-2xl border border-zinc-200 px-4 py-3 font-bold" placeholder="email@example.com" /><input className="w-full rounded-2xl border border-zinc-200 px-4 py-3 font-bold" placeholder="Password" type="password" /><Button>{lang === "tn" ? "دخول / تسجيل" : lang === "fr" ? "Connexion / inscription" : "Login / register"}</Button></div>
-      ) : (
-        <>
-          <div className="rounded-3xl bg-amber-100 p-5 font-bold text-amber-900"><WifiOff className="mb-2" />{t("onlineNeedsFirebase", lang)}<br />{t("localReady", lang)}</div>
-          <div className="flex flex-wrap gap-3"><Link to="/players"><Button>{t("playLocallyNow", lang)}</Button></Link><a href={firebaseDocUrl} target="_blank" rel="noreferrer"><Button variant="secondary">{t("readFirebaseSetup", lang)}</Button></a><Link to="/"><Button variant="ghost">{t("backHome", lang)}</Button></Link></div>
-        </>
-      )}
-    </Card>
-  );
-}
-
-function RoomLinkPage() {
-  const lang = useAppStore((s) => s.lang);
-  const { roomCode } = useParams<{ roomCode: string }>();
-  return <Card className="mx-auto max-w-2xl space-y-5 text-center"><Share2 className="mx-auto text-teal-500" size={54} /><Badge>{roomCode}</Badge><h1 className="text-4xl font-black">{t("onlineRooms", lang)}</h1><p className="font-bold text-zinc-700">{t("roomNeedsFirebase", lang)}</p><Link to="/online"><Button>{t("onlineRooms", lang)}</Button></Link></Card>;
-}
-
 function Settings() {
   const lang = useAppStore((s) => s.lang);
   const players = useAppStore((s) => s.players);
@@ -527,9 +505,9 @@ export default function App() {
         <Route path="/players" element={<PlayerSetup />} />
         <Route path="/games" element={<GameLibrary />} />
         <Route path="/play/:id" element={<PlayRouter />} />
-        <Route path="/room/:roomCode" element={<RoomLinkPage />} />
+        <Route path="/room/:roomCode" element={<Suspense fallback={<Card className="mx-auto max-w-2xl p-6 font-black">{t("waitingPlayers", useAppStore.getState().lang)}</Card>}><RoomLinkPage /></Suspense>} />
         <Route path="/results" element={<Results />} />
-        <Route path="/online" element={<Online />} />
+        <Route path="/online" element={<Suspense fallback={<Card className="mx-auto max-w-2xl p-6 font-black">{t("onlineRooms", useAppStore.getState().lang)}</Card>}><Online /></Suspense>} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/about" element={<About />} />
       </Routes>
