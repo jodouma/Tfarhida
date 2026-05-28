@@ -1,6 +1,6 @@
 import type { GameMeta, GuessWord, ImpostorPack, QuizQuestion, TruthDarePrompt, WouldQuestion } from "../../types";
 
-const img = (name: string) => `${import.meta.env.BASE_URL}assets/examples/${name}`;
+const img = (name: string) => `${import.meta.env.BASE_URL}assets/${name}`;
 
 export const gameCatalog: GameMeta[] = [
   {
@@ -13,7 +13,7 @@ export const gameCatalog: GameMeta[] = [
     duration: { tn: "8-12 دق", fr: "8-12 min", en: "8-12 min" },
     color: "from-violet-600 to-fuchsia-500",
     icon: "🕵️",
-    image: img("impostor.jpeg"),
+    image: img("app/games/game-impostor.jpg"),
   },
   {
     id: "truth-or-dare",
@@ -25,7 +25,7 @@ export const gameCatalog: GameMeta[] = [
     duration: { tn: "5-10 دق", fr: "5-10 min", en: "5-10 min" },
     color: "from-rose-500 to-orange-400",
     icon: "🎲",
-    image: img("truth-dare.jpeg"),
+    image: img("app/games/game-truth-or-dare.jpg"),
   },
   {
     id: "would-you-rather",
@@ -37,7 +37,7 @@ export const gameCatalog: GameMeta[] = [
     duration: { tn: "4-8 دق", fr: "4-8 min", en: "4-8 min" },
     color: "from-amber-400 to-pink-500",
     icon: "⚖️",
-    image: img("would-you-rather.jpeg"),
+    image: img("app/games/game-would-you-rather.jpg"),
   },
   {
     id: "guess-word",
@@ -49,7 +49,7 @@ export const gameCatalog: GameMeta[] = [
     duration: { tn: "6-10 دق", fr: "6-10 min", en: "6-10 min" },
     color: "from-cyan-500 to-teal-400",
     icon: "💬",
-    image: img("guess-word.jpeg"),
+    image: img("app/games/game-guess-word.jpg"),
   },
   {
     id: "tunisian-quiz",
@@ -61,7 +61,7 @@ export const gameCatalog: GameMeta[] = [
     duration: { tn: "5-9 دق", fr: "5-9 min", en: "5-9 min" },
     color: "from-emerald-500 to-sky-500",
     icon: "🇹🇳",
-    image: img("tunisian-quiz.jpeg"),
+    image: img("app/games/game-quiz.jpg"),
   },
 ];
 

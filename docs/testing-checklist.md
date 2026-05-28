@@ -1,7 +1,5 @@
 # Checklist de test
 
-# Checklist de test
-
 - Fresh browser sans `localStorage`: aucun joueur par défaut ne doit apparaître.
 - Migration anciens faux joueurs: si seuls `Youssef` et `Amira` sont sauvegardés, ils sont supprimés.
 - Ajouter, modifier et supprimer des joueurs réels.
@@ -28,6 +26,10 @@
 - Tester lien local de partage: il ouvre le même jeu sans prétendre synchroniser les scores.
 - Tester `/#/room/ABC123` sans Firebase: page claire indiquant que Firebase est requis.
 - Tester page Online sans Firebase: pas de faux login, message de configuration.
+- Vérifier qu’aucune image manuscrite de planification n’est visible dans l’application.
+- Vérifier qu’aucune image applicative n’est cassée.
+- Vérifier que GitHub Pages ne sert pas une page blanche.
+- Vérifier que `dist/index.html` ne référence pas `/src/main.tsx`.
 - Lancer `npm run typecheck`.
 - Lancer `npm run lint`.
 - Lancer `npm run build`.

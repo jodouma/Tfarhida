@@ -8,6 +8,21 @@ Application déployée sur GitHub Pages :
 
 https://jodouma.github.io/Tfarhida/
 
+## Contexte académique
+
+Tfarhida est un projet PFE/Bachelor réalisé à Leaders University — Nabeul pour l’année universitaire 2025–2026.
+
+Réalisé par :
+
+- Yosra El Hadj Brayek
+- Wassim Chommakh
+
+Encadrante pédagogique :
+
+- Madame Imen Herzi
+
+Le concept initial **BitBox** a évolué vers **Tfarhida**, une identité plus ancrée dans la culture tunisienne et mieux adaptée à une application de mini-jeux sociaux.
+
 ## Fonctionnalités
 
 - Mode local immédiat avec joueurs, avatars, scores et sauvegarde `localStorage`
@@ -18,6 +33,7 @@ https://jodouma.github.io/Tfarhida/
 - Architecture Firebase Auth + Firestore optionnelle pour les salles en ligne
 - Liens de partage locaux pour ouvrir le même jeu sur un autre appareil
 - Déploiement GitHub Pages avec base `/Tfarhida/` et `HashRouter`
+- Rapport PFE final généré en Markdown, DOCX et PDF dans `docs/report/`
 
 ## Stack
 
@@ -84,6 +100,24 @@ docs/               documentation PFE/PFA
 public/assets/      images locales
 ```
 
-## Captures
+## Captures et rapport
 
-Ajouter les captures finales dans `docs/` après déploiement ou présentation.
+Les captures finales sont disponibles dans :
+
+```text
+docs/assets/report/screenshots/
+```
+
+Le rapport final est disponible dans :
+
+```text
+docs/report/rapport-pfe-tfarhida.md
+docs/report/Rapport_PFE_Tfarhida_Yosra_El_Hadj_Brayek.docx
+docs/report/Rapport_PFE_Tfarhida_Yosra_El_Hadj_Brayek.pdf
+```
+
+## Limitations
+
+- Le mode local est fonctionnel.
+- Les salles en ligne temps réel nécessitent une configuration Firebase réelle.
+- L’application ne simule pas de faux multijoueur.

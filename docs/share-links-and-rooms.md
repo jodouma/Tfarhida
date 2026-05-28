@@ -23,3 +23,7 @@ La synchronisation temps réel nécessite Firebase Auth et Firestore configurés
 ## Règle importante
 
 Tfarhida ne simule pas le multijoueur temps réel. Le local reste local; le realtime passe par Firebase.
+
+## Statut actuel
+
+Dans la livraison finale, le mode local est fonctionnel. Le mode salle en ligne est architecturalement préparé, mais il reste dépendant d’une configuration Firebase réelle avant d’être utilisable en production.

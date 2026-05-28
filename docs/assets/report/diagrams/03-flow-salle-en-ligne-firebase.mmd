@@ -1,0 +1,7 @@
+flowchart TD
+  O[Ouvrir salles en ligne] --> C{Firebase configure ?}
+  C -- Non --> F[Afficher configuration requise]
+  C -- Oui --> A[Auth email ou invité]
+  A --> Room[Créer/rejoindre salle]
+  Room --> Sync[Sync Firestore temps réel]
+  Sync --> Play[Partie multijoueur]

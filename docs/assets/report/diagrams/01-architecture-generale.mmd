@@ -1,0 +1,7 @@
+flowchart LR
+  U[Utilisateur navigateur] --> A[Application React/Vite]
+  A --> L[LocalStorage tfarhida.v1.*]
+  A -. optionnel .-> FA[Firebase Auth]
+  A -. optionnel .-> FS[Firestore Rooms]
+  GH[GitHub Actions] --> GP[GitHub Pages]
+  GP --> U
